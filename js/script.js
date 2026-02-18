@@ -166,6 +166,7 @@ function initNavbar() {
       hamburger.setAttribute('aria-expanded', open);
       mobileMenu.classList.toggle('open', open);
       mobileMenu.setAttribute('aria-hidden', !open);
+      navbar.classList.toggle('open', open); 
     });
 
     // Close on link click
@@ -212,8 +213,14 @@ function initTypewriter() {
 
   const phrases = [
     'Praktikum Komputasi Numerik',
-    'Metode Numerik',
-    'Komputasi Fisika',
+    'Numerical Methods',
+    'Solve. Iterate. Converge.',
+    'while(!converged) { iterate(); }',
+    'Approximate > Exact',
+    'matrix.solve()',
+    '> Running Newton-Raphson...',
+    'Compiling Numerical Methods...',
+    '> Error: 0.0001',
   ];
 
   let phraseIdx = 0;

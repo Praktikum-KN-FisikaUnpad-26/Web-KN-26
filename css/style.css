@@ -370,6 +370,7 @@ section {
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(168, 85, 247, 0.20);
   border-radius: 50px;          /* pill shape */
+  overflow: visible;
   transition: background var(--dur-base) ease;
 }
 
@@ -492,23 +493,33 @@ section {
 
 /* Mobile drawer */
 .mobile-menu {
-  border-radius: 0 0 24px 24px;
-  display: none;
-  background: rgba(8, 5, 26, 0.96);
-  backdrop-filter: blur(20px);
-  padding: 20px 5%;
-  border-top: 1px solid var(--glass-border);
-  transform: translateY(-10px);
+  position: absolute;
+  top: calc(100% + 12px);   /* 🔥 kasih jarak 12px dari navbar */
+  left: 0;
+  width: 100%;
+
+  background: rgba(8, 5, 26, 0.95);
+  backdrop-filter: blur(24px);
+
+  padding: 20px 24px;
+
+  border-radius: 28px;   /* 🔥 rounded rectangle */
+  border: 1px solid rgba(168, 85, 247, 0.25);
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+
+  transform: translateY(-10px) scale(0.95);
   opacity: 0;
   pointer-events: none;
-  transition: all var(--dur-base) ease;
+
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
 }
 
+
 .mobile-menu.open {
-  display: block;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   opacity: 1;
-  pointer-events: all;
+  pointer-events: auto;
 }
 
 .mobile-menu li { border-bottom: 1px solid rgba(168, 85, 247, 0.10); }
@@ -636,6 +647,20 @@ section {
   align-items: center;
   gap: 24px;
 }
+
+/* Mobile Stats */
+@media (max-width: 768px) {
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+}
+
 
 .stat strong {
   display: block;
@@ -940,6 +965,12 @@ section {
   font-weight: 500;
 }
 
+.asisten-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 
 /* ================================================================
    12. BUKU REFERENSI
@@ -1120,23 +1151,21 @@ section {
 /* Hover / active: book lifts up */
 .shelf-book:hover .book-spine,
 .shelf-book.active .book-spine {
-  transform: translateY(-22px);
+  transform: translateY(-8px);   /* dari -22px jadi -8px */
   box-shadow: 4px 18px 36px rgba(0, 0, 0, 0.60);
 }
 
 /* Popup card */
 .book-popup {
   position: absolute;
-  bottom: calc(100% + 14px);
-  left: 50%;
-  transform: translateX(-50%) translateY(10px) scale(0.88);
+  top: 50%;
+  left: calc(100% + 14px);
+  transform: translateY(-50%) translateX(10px) scale(0.88);
   opacity: 0;
   pointer-events: none;
   width: 175px;
   z-index: 50;
-  transition:
-    opacity 0.32s ease,
-    transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: opacity 0.32s ease, transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
   padding: 0 0 14px;
   overflow: hidden;
   border-radius: var(--radius-md);
@@ -1145,23 +1174,27 @@ section {
 .shelf-book:hover .book-popup,
 .shelf-book.active .book-popup {
   opacity: 1;
-  transform: translateX(-50%) translateY(0) scale(1);
+  transform: translateY(-50%) translateX(0) scale(1);
   pointer-events: all;
 }
 
-/* Arrow pointing down to spine */
 .book-popup::after {
   content: '';
   position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  left: -8px;
+  transform: translateY(-50%);
   width: 0; height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid rgba(168, 85, 247, 0.22);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid rgba(168, 85, 247, 0.22);
 }
 
+.shelf-book:hover .book-spine,
+.shelf-book.active .book-spine {
+  transform: translateY(-8px);
+  box-shadow: 4px 18px 36px rgba(0, 0, 0, 0.60);
+}
 /* Cover in popup */
 .popup-cover-wrap {
   width: 100%;
