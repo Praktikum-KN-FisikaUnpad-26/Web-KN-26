@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praktikum Komputasi Numerik 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       BACKGROUND DECORATIONS (handled by JS + CSS)
+  ============================================================ -->
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+  <canvas id="starCanvas" aria-hidden="true"></canvas>
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+
+      <!-- LOGO — ganti src dengan path logo Anda -->
+      <a href="#hero" class="nav-logo">
+        <img
+          src="assets/icons/LogoAKN.png"
+          alt="Logo LabKom AKN"
+          class="nav-logo-img"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <span class="nav-logo-fallback" aria-hidden="true">
+          <i class="fas fa-infinity"></i>
+        </span>
+        <span class="nav-logo-text">LabKom <strong>AKN</strong></span>
+      </a>
+
+      <!-- Desktop nav links -->
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#asisten">Asisten</a></li>
+          <li><a href="#referensi">Referensi</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#template">Template</a></li>
+          <li><a href="#hall">Hall of Fame</a></li>
+          <li><a href="#whatsapp" class="nav-cta">
+            <i class="fab fa-whatsapp"></i> Grup WA
+          </a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul>
+        <li><a href="#asisten">Asisten</a></li>
+        <li><a href="#referensi">Referensi</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#template">Template</a></li>
+        <li><a href="#hall">Hall of Fame</a></li>
+        <li><a href="#whatsapp">Grup WhatsApp</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       HERO / SELAMAT DATANG
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="binary-rain" id="binaryRain"></div>  <!-- ← tambah ini -->
+    <div class="bg-orbs" ...></div>  <!-- ← tetap pertahankan ini -->   
+    <div class="container hero-layout">
+
+      <!-- Left: text content -->
+      <div class="hero-content reveal">
+
+        <!-- Arcade-font sub-label -->
+        <p class="hero-arcade">// PRAKTIKUM KOMPUTASI NUMERIK</p>
+
+        <h1 class="hero-title">
+          Selamat Datang di<br />
+          <span class="gradient-text" id="typedText"></span>
+        </h1>
+
+        <p class="hero-desc">
+          Praktikum Komputasi Numerik membahas metode-metode numerik untuk
+          menyelesaikan masalah matematika dan komputasi dalam Fisika.
+          Bergabunglah dan eksplorasi dunia komputasi bersama kami.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary ripple">
+            <i class="fas fa-file-powerpoint"></i> PPT Responsi
+          </button>
+          <button class="btn btn-secondary ripple">
+            <i class="fas fa-book"></i> Handbook
+          </button>
+        </div>
+
+        <!-- Quick stats -->
+        <div class="hero-stats">
+          <div class="stat">
+            <strong class="counter" data-target="12">0</strong>
+            <span>Asisten</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <strong class="counter" data-target="12">0</strong>
+            <span>Modul</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <strong class="counter" data-target="5">0</strong>
+            <span>Referensi</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: glass card with logo -->
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-card glass-card">
+
+          <!-- ★ LOGO HERO — ganti src="img/logo.png" dengan path logo Anda -->
+          <div class="hero-card-logo">
+            <img
+                src="assets/icons/LogoAKN.png"
+                alt="Logo Praktikum Komputasi Numerik"
+                class="hero-logo-img"
+            />
+        </div>
+
+
+          <h3 class="hero-card-title">Praktikum Komputasi Numerik</h3>
+          <p class="hero-card-sub">Departemen Fisika · FMIPA Unpad</p>
+
+          <div class="divider"></div>
+
+          <p class="hero-card-body">
+            Platform resmi informasi, timeline, template laporan, dan referensi
+            Praktikum Komputasi Numerik 2026.
+          </p>
+        </div>
+
+        <!-- Floating pills -->
+        <div class="float-pill pill-top">
+          <i class="fas fa-calculator"></i> Numerical Methods
+        </div>
+        <div class="float-pill pill-bottom">
+            <img src="assets/icons/Python.png" class="pill-icon" alt="Python Logo"> Python
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ASISTEN LABORATORIUM
+  ============================================================ -->
+  <section class="asisten-praktikum" id="asisten">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <span class="section-label">Tim Kami</span>
+        <h2 class="section-title">Asisten <span class="gradient-text">Laboratorium</span> Komputer</h2>
+        <p class="section-desc">
+          Praktikum Komputasi Numerik Tahun Ajaran 2025/2026,
+          Departemen Fisika, Universitas Padjadjaran.
+        </p>
+      </div>
+
+      <!--
+        ★ ASISTEN LIST
+        Untuk menambah asisten: duplikat satu <div class="asisten-card"> di bawah.
+        Ganti src="img/asisten/nama-asisten.jpg" dengan foto yang sebenarnya.
+        Jika foto tidak ada, avatar fallback (inisial) akan muncul otomatis.
+      -->
+      <div class="asisten-grid">
+
+        <!-- Asisten 1: Koordinator -->
+        <article class="asisten-card glass-card reveal">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/koordinator.jpg"
+              alt="Foto Koordinator"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true">
+              <span>KO</span>
+            </div>
+            <span class="asisten-badge koordinator">Koordinator</span>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Koordinator</p>
+            <p class="asisten-role">Ketua Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 2 -->
+        <article class="asisten-card glass-card reveal reveal-delay-1">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-2.jpg"
+              alt="Foto Asisten 2"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A2</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 2</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 3 -->
+        <article class="asisten-card glass-card reveal reveal-delay-2">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-3.jpg"
+              alt="Foto Asisten 3"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A3</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 3</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 4 -->
+        <article class="asisten-card glass-card reveal reveal-delay-3">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-4.jpg"
+              alt="Foto Asisten 4"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A4</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 4</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 5 -->
+        <article class="asisten-card glass-card reveal reveal-delay-1">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-5.jpg"
+              alt="Foto Asisten 5"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A5</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 5</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 6 -->
+        <article class="asisten-card glass-card reveal reveal-delay-2">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-6.jpg"
+              alt="Foto Asisten 6"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A6</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 6</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 7 -->
+        <article class="asisten-card glass-card reveal reveal-delay-3">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-7.jpg"
+              alt="Foto Asisten 7"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A7</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 7</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 8 -->
+        <article class="asisten-card glass-card reveal reveal-delay-1">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-8.jpg"
+              alt="Foto Asisten 8"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A8</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 8</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 9 -->
+        <article class="asisten-card glass-card reveal reveal-delay-1">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-9.jpg"
+              alt="Foto Asisten 9"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A9</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 9</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 10 -->
+        <article class="asisten-card glass-card reveal reveal-delay-1">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-10.jpg"
+              alt="Foto Asisten 10"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A10</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 10</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+
+        <!-- Asisten 11 -->
+        <article class="asisten-card glass-card reveal reveal-delay-1">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-11.jpg"
+              alt="Foto Asisten 11"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A11</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 11</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>
+
+        <!-- Asisten 12 -->
+        <article class="asisten-card glass-card reveal reveal-delay-1">
+          <div class="asisten-photo-wrap">
+            <img
+              src="img/asisten/asisten-12.jpg"
+              alt="Foto Asisten 12"
+              class="asisten-photo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="asisten-photo-fallback" aria-hidden="true"><span>A12</span></div>
+          </div>
+          <div class="asisten-info">
+            <p class="asisten-name">Nama Asisten 12</p>
+            <p class="asisten-role">Asisten Lab</p>
+          </div>
+        </article>       
+
+      </div><!-- /asisten-grid -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       BUKU REFERENSI
+  ============================================================ -->
+  <section class="buku-referensi" id="referensi">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <span class="section-label">Referensi</span>
+        <h2 class="section-title">Buku Rujukan <span class="gradient-text">/ Referensi</span></h2>
+        <p class="section-desc">
+          Buku referensi utama dan tambahan untuk mendukung pembelajaran dan praktikum
+        </p>
+      </div>
+
+      <!-- RAK 1: Numerical Methods -->
+      <div class="shelf-section reveal">
+        <h3 class="shelf-label"><i class="fas fa-superscript"></i> Numerical Methods</h3>
+        <div class="bookshelf">
+          <div class="shelf-row">
+
+            <div class="shelf-book" data-color="purple" data-link="https://informatika.stei.itb.ac.id/~rinaldi.munir/Buku/Metode%20Numerik/BAb-%2001%20Metode%20Numerik%20Secara%20Umum.pdf">
+              <div class="book-spine">
+                <span class="spine-title">Komputasi Numerik</span>
+                <span class="spine-author">Munir</span>
+              </div>
+              <div class="book-popup glass-card">
+                <div class="popup-cover-wrap">
+                  <img src="assets/images/komputasi-numerik-munir.jpg" alt="Sampul Komputasi Numerik" class="popup-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+                  <div class="popup-cover-fallback"><i class="fas fa-book-open"></i><span>Tambahkan<br>sampul buku</span></div>
+                </div>
+                <div class="popup-info">
+                  <p class="popup-title">Komputasi Numerik</p>
+                  <p class="popup-author">Hnaldi Munir</p>
+                  <span class="popup-pub">Penerbit Informatika</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="shelf-book" data-color="teal" data-link="https://faculty.ksu.edu.sa/sites/default/files/numerical_analysis_9th.pdf">
+              <div class="book-spine">
+                <span class="spine-title">Numerical Analysis</span>
+                <span class="spine-author">Burden</span>
+              </div>
+              <div class="book-popup glass-card">
+                <div class="popup-cover-wrap">
+                  <img src="assets/images/numerical-analysis-burden.jpg" alt="Sampul Numerical Analysis" class="popup-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+                  <div class="popup-cover-fallback"><i class="fas fa-book-open"></i><span>Tambahkan<br>sampul buku</span></div>
+                </div>
+                <div class="popup-info">
+                  <p class="popup-title">Numerical Analysis</p>
+                  <p class="popup-author">Richard L. Burden</p>
+                  <span class="popup-pub">Cambridge University Press</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="shelf-book" data-color="orange" data-link="https://drive.google.com/file/d/1EfxlwWaqAXIFjThxvTPgQsHke3f5w3gB/view">
+              <div class="book-spine">
+                <span class="spine-title">Numerical Methods for Engineers</span>
+                <span class="spine-author">Chapra</span>
+              </div>
+              <div class="book-popup glass-card">
+                <div class="popup-cover-wrap">
+                  <img src="assets/images/numerical-analysis-steven.png" alt="Sampul Numerical Methods" class="popup-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+                  <div class="popup-cover-fallback"><i class="fas fa-book-open"></i><span>Tambahkan<br>sampul buku</span></div>
+                </div>
+                <div class="popup-info">
+                  <p class="popup-title">Numerical Methods for Engineers</p>
+                  <p class="popup-author">Chapra &amp; Canale</p>
+                  <span class="popup-pub">McGraw-Hill Education</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="shelf-plank"></div>
+        </div>
+      </div>
+
+      <!-- RAK 2: Advanced Math -->
+      <div class="shelf-section reveal reveal-delay-1">
+        <h3 class="shelf-label"><i class="fas fa-square-root-alt"></i> Advanced Math</h3>
+        <div class="bookshelf">
+          <div class="shelf-row">
+
+            <div class="shelf-book" data-color="pink" data-link="https://drive.google.com/file/d/1U9yC4EsDOvRLSg8pQcuIXbBcXGQOIxUS/view">
+              <div class="book-spine">
+                <span class="spine-title">Advanced Modern Engineering Mathematics</span>
+                <span class="spine-author">James</span>
+              </div>
+              <div class="book-popup glass-card">
+                <div class="popup-cover-wrap">
+                  <img src="assets/images/mathematical-methods-jones.webp" alt="Sampul Mathematical Methods" class="popup-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+                  <div class="popup-cover-fallback"><i class="fas fa-book-open"></i><span>Tambahkan<br>sampul buku</span></div>
+                </div>
+                <div class="popup-info">
+                  <p class="popup-title">Advanced Modern Engineering Mathematics</p>
+                  <p class="popup-author">Glynn James</p>
+                  <span class="popup-pub">Prentice Hall</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="shelf-book" data-color="blue" data-link="https://drive.google.com/drive/folders/15cE9UCaQyA9KFuLNb7LFIEliMETI0vDM">
+              <div class="book-spine">
+                <span class="spine-title">Calculus &amp; Linear Algebra</span>
+                <span class="spine-author">Purcell</span>
+              </div>
+              <div class="book-popup glass-card">
+                <div class="popup-cover-wrap">
+                  <img src="assets/images/calculus-purcell.jpg" alt="Sampul Calculus" class="popup-cover" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+                  <div class="popup-cover-fallback"><i class="fas fa-book-open"></i><span>Tambahkan<br>sampul buku</span></div>
+                </div>
+                <div class="popup-info">
+                  <p class="popup-title">Calculus &amp; Linear Algebra</p>
+                  <p class="popup-author">Purcell, Varberg &amp; Rigdon</p>
+                  <span class="popup-pub">Pearson</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="shelf-plank"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TIMELINE PRAKTIKUM
+  ============================================================ -->
+  <section class="timeline" id="timeline">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <span class="section-label">Jadwal AKN · 25/26</span>
+        <h2 class="section-title">Timeline <span class="gradient-text">Praktikum</span></h2>
+        <p class="section-desc">
+          Deadline setiap pending agar kamu bisa mempersiapkan diri.
+          Perhatikan warna penanda di kalender.
+        </p>
+      </div>
+
+      <!-- Calendar -->
+      <div class="gcal-wrap glass-card reveal">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=prak.pkf.fisikaunpad%40gmail.com&ctz=UTC"
+          class="gcal-frame"
+          frameborder="0"
+          scrolling="no"
+          title="Google Calendar Praktikum Komputasi Numerik"
+          allowfullscreen
+        ></iframe>
+
+        <!-- Overlay hint ditampilkan selagi iframe belum dikonfigurasi -->
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TEMPLATE LAPORAN
+  ============================================================ -->
+  <section class="template" id="template">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <span class="section-label">Template Laporan AKN · 25/26</span>
+        <h2 class="section-title">Template <span class="gradient-text">Laporan</span> Praktikum</h2>
+        <p class="section-desc">
+          Kami menyediakan template laporan yang sudah disesuaikan.
+          Download dan gunakan untuk laporan kamu.
+        </p>
+      </div>
+
+      <!--
+        ★ TEMPLATE CARDS
+        Ganti src="img/template/..." dengan screenshot tampilan template yang sebenarnya.
+        Klik tombol Download bisa diarahkan ke link download.
+      -->
+      <div class="template-grid">
+
+        <!-- Template LaTeX -->
+        <article class="template-card glass-card reveal">
+          <div class="template-preview-wrap">
+            <img
+              src="assets/icons/Latex.webp"
+              alt="Preview Template LaTeX"
+              class="template-preview"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="template-preview-fallback" aria-hidden="true">
+              <i class="fas fa-file-alt"></i>
+              <span>LaTeX</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-badge badge-teal">TeX</span>
+            <h3 class="template-name">LaTeX Template</h3>
+            <p class="template-desc">
+              Template profesional dengan format ilmiah, referensi otomatis,
+              dan layout akademik terstruktur.
+            </p>
+            <button class="btn btn-primary ripple">
+              <i class="fas fa-download"></i> Download
+            </button>
+          </div>
+        </article>
+
+        <!-- Panduan PDF -->
+        <article class="template-card glass-card reveal reveal-delay-2">
+          <div class="template-preview-wrap">
+            <img
+              src="img/template/preview-panduan.jpg"
+              alt="Preview Panduan Penulisan"
+              class="template-preview"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="template-preview-fallback" aria-hidden="true">
+              <i class="fas fa-file-pdf"></i>
+              <span>PDF</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-badge badge-purple">PDF Guide</span>
+            <h3 class="template-name">Panduan Penulisan</h3>
+            <p class="template-desc">
+              Dokumentasi lengkap standar format, tata cara penulisan,
+              dan ketentuan pengumpulan laporan.
+            </p>
+            <button class="btn btn-secondary ripple">
+              <i class="fas fa-eye"></i> Baca
+            </button>
+          </div>
+        </article>
+
+      </div><!-- /template-grid -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       HALL OF FAME
+  ============================================================ -->
+  <section class="hall" id="hall">
+    <div class="container">
+
+      <div class="section-head reveal" style="text-align:center;">
+        <span class="section-label">Pencapaian Terbaik</span>
+        <h2 class="section-title">🏆 Hall of <span class="gradient-text">Fame</span></h2>
+        <p class="section-desc" style="margin:0 auto;">
+          Mahasiswa dengan nilai terbaik dalam Program Komputasi Numerik 2026.
+          Terima kasih telah memberikan yang terbaik!
+        </p>
+      </div>
+
+      <!-- Podium Top 3 -->
+      <div class="podium reveal">
+
+        <!-- Rank 2 -->
+        <div class="podium-item rank-2">
+          <span class="podium-medal">🥈</span>
+          <div class="podium-avatar">
+            <span>MB</span>
+          </div>
+          <p class="podium-rank-label">#2</p>
+          <p class="podium-name">Mahasiswa B</p>
+          <p class="podium-score">95.2</p>
+          <div class="podium-base rank-2-base"></div>
+        </div>
+
+        <!-- Rank 1 -->
+        <div class="podium-item rank-1">
+          <span class="podium-medal crown">👑</span>
+          <div class="podium-avatar gold">
+            <span>MA</span>
+          </div>
+          <p class="podium-rank-label">#1</p>
+          <p class="podium-name">Mahasiswa A</p>
+          <p class="podium-score gold-score">98.7</p>
+          <div class="podium-base rank-1-base"></div>
+        </div>
+
+        <!-- Rank 3 -->
+        <div class="podium-item rank-3">
+          <span class="podium-medal">🥉</span>
+          <div class="podium-avatar">
+            <span>MC</span>
+          </div>
+          <p class="podium-rank-label">#3</p>
+          <p class="podium-name">Mahasiswa C</p>
+          <p class="podium-score">93.0</p>
+          <div class="podium-base rank-3-base"></div>
+        </div>
+
+      </div>
+
+      <!-- Rank 4+ -->
+      <div class="hall-rest reveal reveal-delay-2">
+        <div class="hall-pill"><span class="hall-rank">#4</span> Mahasiswa D <span class="hall-score">91.5</span></div>
+        <div class="hall-pill"><span class="hall-rank">#5</span> Mahasiswa E <span class="hall-score">90.2</span></div>
+        <div class="hall-pill"><span class="hall-rank">#6</span> Mahasiswa F <span class="hall-score">89.8</span></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHATSAPP CTA
+  ============================================================ -->
+  <section class="whatsapp" id="whatsapp">
+    <div class="container">
+      <div class="wa-card glass-card reveal">
+        <i class="fab fa-whatsapp wa-icon"></i>
+        <h2 class="wa-title">Join the Discussion Group<br />to get any information</h2>
+        <p class="wa-desc">
+          Bergabunglah dengan grup diskusi WhatsApp kami untuk mendapatkan
+          informasi terbaru, jadwal, dan pengumuman seputar praktikum.
+        </p>
+        <a href="https://chat.whatsapp.com/GANTI-LINK-GRUP" class="btn btn-wa ripple" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i> WhatsApp Link
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <!-- Logo & tagline -->
+      <div class="footer-brand">
+
+        <!-- ★ FOOTER LOGO — ganti src="img/logo.png" -->
+        <div class="footer-logo">
+          <img
+            src="assets/icons/LogoAKN.png"
+            alt="Logo LabKom AKN"
+            class="footer-logo-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <div class="footer-logo-fallback" aria-hidden="true">
+            <i class="fas fa-infinity"></i>
+          </div>
+          <span class="footer-logo-text">LabKom <strong>AKN</strong></span>
+        </div>
+
+        <p class="footer-tagline">
+          Asisten Laboratorium Komputer<br />
+          Praktikum Komputasi Numerik · FMIPA Unpad
+        </p>
+      </div>
+
+      <!-- Quick links -->
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <ul>
+          <li><a href="#asisten">Asisten</a></li>
+          <li><a href="#referensi">Referensi</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#template">Template</a></li>
+          <li><a href="#hall">Hall of Fame</a></li>
+        </ul>
+      </nav>
+
+      <!-- Collab badges -->
+      <div class="footer-collab">
+        <p class="collab-title">In Collaboration With</p>
+        <div class="collab-logos">
+            <img src="assets/icons/Logo-Fisika.png" alt="Logo Fisika Unpad">
+            <img src="assets/icons/LogoHIFI-2.png" alt="Logo HIFI">
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyrights &copy; 2026 Asisten LabKom AKN &mdash; All rights reserved</p>
+    </div>
+  </footer>
+
+
+  <!-- Script -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
