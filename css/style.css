@@ -1626,6 +1626,32 @@ section {
   font-weight: 500;
 }
 
+@media (max-width: 768px) {
+
+  .podium {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 🔥 tetap 3 kolom */
+    gap: 12px;
+    align-items: end;
+    justify-items: center;
+  }
+
+  .podium-item {
+    width: 100%;
+    max-width: none;
+    padding: 20px 10px 0;
+  }
+
+  .rank-1 {
+    transform: scale(1.05);   /* sedikit lebih besar */
+  }
+
+  .rank-2,
+  .rank-3 {
+    transform: scale(0.95);   /* sedikit lebih kecil */
+  }
+
+}
 
 /* ================================================================
    16. WHATSAPP CTA
@@ -1891,4 +1917,5 @@ section {
   .hero-buttons { flex-direction: column; }
   .buku-grid { grid-template-columns: 1fr; }
   .template-grid { grid-template-columns: 1fr; }
+
 }
