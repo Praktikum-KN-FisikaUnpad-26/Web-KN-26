@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMagneticCards();
   initActiveNav();
   initBinaryRain();
+  checkPopupFlip();
 });
 
 
@@ -506,6 +507,28 @@ document.querySelectorAll('.shelf-book').forEach(book => {
   });
 });
 
+function checkPopupFlip() {
+  document.querySelectorAll('.shelf-book').forEach(book => {
+    const popup = book.querySelector('.book-popup');
+    if (!popup) return;
+
+    // Reset dulu
+    book.classList.remove('popup-flip');
+
+    const bookRect = book.getBoundingClientRect();
+    const popupWidth = popup.offsetWidth || 175;
+    const gap = 14;
+
+    // Kalau popup akan melewati tepi kanan viewport → flip ke kiri
+    if (bookRect.right + gap + popupWidth > window.innerWidth) {
+      book.classList.add('popup-flip');
+    }
+  });
+}
+
+// Jalankan saat load & resize
+window.addEventListener('load', checkPopupFlip);
+window.addEventListener('resize', checkPopupFlip);
 
 /* ================================================================
    9. ACTIVE NAV LINK HIGHLIGHTING

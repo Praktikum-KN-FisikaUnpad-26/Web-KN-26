@@ -1288,6 +1288,26 @@ section {
   border-radius: var(--radius-pill);
 }
 
+/* Popup flip ke KIRI (untuk buku di sisi kanan / mobile) */
+.shelf-book.popup-flip .book-popup {
+  left: auto;
+  right: calc(100% + 14px);
+  transform: translateY(-50%) translateX(-10px) scale(0.88);
+}
+
+.shelf-book.popup-flip:hover .book-popup,
+.shelf-book.popup-flip.active .book-popup {
+  transform: translateY(-50%) translateX(0) scale(1);
+}
+
+/* Arrow flip ke kanan */
+.shelf-book.popup-flip .book-popup::after {
+  left: auto;
+  right: -8px;
+  border-right: none;
+  border-left: 8px solid rgba(168, 85, 247, 0.22);
+}
+
 
 /* ================================================================
    13. TIMELINE / CALENDAR
