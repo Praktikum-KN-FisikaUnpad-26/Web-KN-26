@@ -863,6 +863,7 @@ section {
   100% { opacity: 0.45; }
 }
 
+
 /* ================================================================
    11. ASISTEN LABORATORIUM
 ================================================================ */
@@ -896,21 +897,18 @@ section {
 
 /* ★ PHOTO WRAPPER */
 .asisten-photo-wrap {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
   margin: 0 auto 16px;
   position: relative;
   flex-shrink: 0;
+  scale: var(1xxxxx);
 }
 
 .asisten-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid rgba(168, 85, 247, 0.40);
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.30);
 }
 
 /* Fallback avatar shown when img missing */
@@ -918,8 +916,6 @@ section {
   display: none;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  border: 2px solid rgba(168, 85, 247, 0.40);
   background: linear-gradient(135deg, var(--clr-primary-dark), var(--clr-accent));
   align-items: center;
   justify-content: center;
@@ -927,7 +923,6 @@ section {
   font-size: 1.1rem;
   font-weight: 800;
   color: #fff;
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35);
 }
 
 /* Badge koordinator */
@@ -1116,6 +1111,30 @@ section {
 .shelf-book[data-color="blue"] .book-spine {
   background: linear-gradient(180deg, #1d4ed8, #1e3a8a, #172554);
   box-shadow: 2px 4px 14px rgba(29, 78, 216, 0.45);
+}
+.shelf-book[data-color="green"] .book-spine {
+  background: linear-gradient(180deg, #15803d, #166534, #14532d);
+  box-shadow: 2px 4px 14px rgba(21, 128, 61, 0.45);
+}
+.shelf-book[data-color="gray"] .book-spine {
+  background: linear-gradient(180deg, #4b5563, #374151, #1f2937);
+  box-shadow: 2px 4px 14px rgba(75, 85, 99, 0.45);
+}
+.shelf-book[data-color="yellow"] .book-spine {
+  background: linear-gradient(180deg, #ca8a04, #854d0e, #713f0b);
+  box-shadow: 2px 4px 14px rgba(202, 138, 4, 0.45);
+}
+.shelf-book[data-color="red"] .book-spine {
+  background: linear-gradient(180deg, #b91c1c, #7f1d1d, #641e16);
+  box-shadow: 2px 4px 14px rgba(185, 28, 28, 0.45);
+}
+.shelf-book[data-color="indigo"] .book-spine {
+  background: linear-gradient(180deg, #4338ca, #312e81, #231651);
+  box-shadow: 2px 4px 14px rgba(67, 56, 202, 0.45);
+}
+.shelf-book[data-color="white"] .book-spine {
+  background: linear-gradient(180deg, #bcbcbc, #a0a3a8, #9ca3af);
+  box-shadow: 2px 4px 14px rgba(243, 244, 246, 0.45);
 }
 
 /* Spine text — rotated vertically */
@@ -1626,6 +1645,40 @@ section {
   font-weight: 500;
 }
 
+/* ── SPOILER BLUR — tambah class .spoiler ke .podium-item untuk blur ── */
+.podium-item.spoiler {
+  filter: blur(7px);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    filter 0.4s ease,
+    transform var(--dur-base) var(--ease-spring);
+}
+
+.podium-item.spoiler:hover {
+  transform: translateY(0);   /* matikan hover lift saat blur */
+}
+
+/* Tanda tanya overlay — tetap tajam di atas blur */
+.podium-item.spoiler::before {
+  content: '?';
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ff-display);
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(168, 85, 247, 0.90);
+  text-shadow:
+    0 0 30px rgba(168, 85, 247, 0.7),
+    0 0 60px rgba(168, 85, 247, 0.3);
+  filter: blur(0);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  pointer-events: none;
+}
 
 /* ================================================================
    16. WHATSAPP CTA
