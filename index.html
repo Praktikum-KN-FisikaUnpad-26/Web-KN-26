@@ -8,7 +8,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/LogoAKN.png">
   <link rel="shortcut icon" href="assets/icons/LogoAKN.png">
 
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,7 +37,7 @@
   <header class="navbar" id="navbar">
     <div class="nav-inner">
 
-      <!-- LOGO — ganti src dengan path logo Anda -->
+      <!-- LOGO -->
       <a href="#hero" class="nav-logo">
         <img
           src="assets/icons/LogoAKN.png"
@@ -60,9 +59,6 @@
           <li><a href="#timeline">Timeline</a></li>
           <li><a href="#template">Template</a></li>
           <li><a href="#hall">Hall of Fame</a></li>
-          <!--<li><a href="#whatsapp" class="nav-cta">
-            <i class="fab fa-whatsapp"></i> Instagram -->
-          </a></li>
         </ul>
       </nav>
 
@@ -80,7 +76,7 @@
         <li><a href="#timeline">Timeline</a></li>
         <li><a href="#template">Template</a></li>
         <li><a href="#hall">Hall of Fame</a></li>
-        <!--<li><a href="#whatsapp">Grup WhatsApp</a></li> -->
+        <li><a href="#whatsapp">Grup WhatsApp</a></li>
       </ul>
     </div>
   </header>
@@ -90,8 +86,7 @@
        HERO / SELAMAT DATANG
   ============================================================ -->
   <section class="hero" id="hero">
-    <div class="binary-rain" id="binaryRain"></div>  <!-- ← tambah ini -->
-    <div class="bg-orbs" ...></div>  <!-- ← tetap pertahankan ini -->   
+    <div class="binary-rain" id="binaryRain"></div>
     <div class="container hero-layout">
 
       <!-- Left: text content -->
@@ -123,7 +118,6 @@
           </a>
         </div>
 
-        <!-- Quick stats -->
         <!--
         <div class="hero-stats">
           <div class="stat">
@@ -140,22 +134,21 @@
             <strong class="counter" data-target="5">0</strong>
             <span>Referensi</span>
           </div>
-        </div> -->
+        </div>
+        -->
       </div>
 
       <!-- Right: glass card with logo -->
       <div class="hero-visual reveal reveal-delay-2">
         <div class="hero-card glass-card">
 
-          <!-- ★ LOGO HERO — ganti src="img/logo.png" dengan path logo Anda -->
           <div class="hero-card-logo">
             <img
                 src="assets/icons/LogoAKN.png"
                 alt="Logo Praktikum Komputasi Numerik"
                 class="hero-logo-img"
             />
-        </div>
-
+          </div>
 
           <h3 class="hero-card-title">Praktikum Komputasi Numerik</h3>
           <p class="hero-card-sub">Departemen Fisika · FMIPA Unpad</p>
@@ -201,12 +194,6 @@
         </p>
       </div>
 
-      <!--
-        ★ ASISTEN LIST
-        Untuk menambah asisten: duplikat satu <div class="asisten-card"> di bawah.
-        Ganti src="img/asisten/nama-asisten.jpg" dengan foto yang sebenarnya.
-        Jika foto tidak ada, avatar fallback (inisial) akan muncul otomatis.
-      -->
       <div class="asisten-grid">
 
         <a href="https://wa.me/6285353965837" target="_blank" class="asisten-link">
@@ -468,7 +455,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="shelf-book" data-color="red" data-link="https://drive.google.com/file/d/1ZY-tIL0Wk9kSKBIQY1qgcSJmOEzNxCyH/view?usp=drive_link">
               <div class="book-spine">
                 <span class="spine-title">Introductory Computational Physics</span>
@@ -604,8 +591,6 @@
           title="Google Calendar Praktikum Komputasi Numerik"
           allowfullscreen
         ></iframe>
-
-        <!-- Overlay hint ditampilkan selagi iframe belum dikonfigurasi -->
       </div>
 
     </div>
@@ -616,78 +601,78 @@
        TEMPLATE LAPORAN
   ============================================================ -->
   <section class="template" id="template">
-      <div class="container">
-        <div class="section-head reveal">
-          <span class="section-label">Template Laporan AKN · 25/26</span>
-          <h2 class="section-title">Template <span class="gradient-text">Laporan</span> Praktikum</h2>
-          <p class="section-desc">
-            Kami menyediakan template laporan yang sudah disesuaikan.
-            Download dan gunakan untuk laporan kamu.
-          </p>
-        </div>
-  
-        <div class="template-grid">
-          <!-- Template LaTeX -->
-          <article class="template-card glass-card reveal">
-            <div class="template-preview-wrap">
-              <img
-                src="assets/icons/Latex.webp"
-                alt="Preview Template LaTeX"
-                class="template-preview"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <div class="template-preview-fallback" aria-hidden="true">
-                <i class="fas fa-file-alt"></i>
-                <span>LaTeX</span>
-              </div>
-            </div>
-            <div class="template-info">
-              <span class="template-badge badge-teal">TeX</span>
-              <h3 class="template-name">LaTeX Template</h3>
-              <p class="template-desc">
-                Template profesional dengan format ilmiah, referensi otomatis,
-                dan layout akademik terstruktur.
-              </p>
-              <a href="https://drive.google.com/drive/folders/1E4YuBcY-5iEGVxWxm3VQongX0BTpRkuZ?usp=sharing"
-                 target="_blank" rel="noopener"
-                 class="btn btn-primary ripple">
-                <i class="fas fa-download"></i> Download
-              </a>
-            </div>
-          </article>
-  
-          <!-- Panduan PDF -->
-          <article class="template-card glass-card reveal reveal-delay-2">
-            <div class="template-preview-wrap">
-              <img
-                src="img/template/preview-panduan.jpg"
-                alt="Preview Panduan Penulisan"
-                class="template-preview"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <div class="template-preview-fallback" aria-hidden="true">
-                <i class="fas fa-file-pdf"></i>
-                <span>PDF</span>
-              </div>
-            </div>
-            <div class="template-info">
-              <span class="template-badge badge-purple">PDF Guide</span>
-              <h3 class="template-name">Panduan Penulisan</h3>
-              <p class="template-desc">
-                Dokumentasi lengkap standar format, tata cara penulisan,
-                dan ketentuan pengumpulan laporan.
-              </p>
-              <a href="https://drive.google.com/file/d/GANTI-ID-FILE-PANDUAN/view?usp=sharing"
-                 target="_blank" rel="noopener"
-                 class="btn btn-secondary ripple">
-                <i class="fas fa-eye"></i> Baca
-              </a>
-            </div>
-          </article>
-  
-        </div><!-- /template-grid -->
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Template Laporan AKN · 25/26</span>
+        <h2 class="section-title">Template <span class="gradient-text">Laporan</span> Praktikum</h2>
+        <p class="section-desc">
+          Kami menyediakan template laporan yang sudah disesuaikan.
+          Download dan gunakan untuk laporan kamu.
+        </p>
       </div>
-    </section>
+
+      <div class="template-grid">
+        <!-- Template LaTeX -->
+        <article class="template-card glass-card reveal">
+          <div class="template-preview-wrap">
+            <img
+              src="assets/icons/Latex.webp"
+              alt="Preview Template LaTeX"
+              class="template-preview"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="template-preview-fallback" aria-hidden="true">
+              <i class="fas fa-file-alt"></i>
+              <span>LaTeX</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-badge badge-teal">TeX</span>
+            <h3 class="template-name">LaTeX Template</h3>
+            <p class="template-desc">
+              Template profesional dengan format ilmiah, referensi otomatis,
+              dan layout akademik terstruktur.
+            </p>
+            <a href="https://drive.google.com/drive/folders/1E4YuBcY-5iEGVxWxm3VQongX0BTpRkuZ?usp=sharing"
+               target="_blank" rel="noopener"
+               class="btn btn-primary ripple">
+              <i class="fas fa-download"></i> Download
+            </a>
+          </div>
+        </article>
+
+        <!-- Panduan PDF -->
+        <article class="template-card glass-card reveal reveal-delay-2">
+          <div class="template-preview-wrap">
+            <img
+              src="img/template/preview-panduan.jpg"
+              alt="Preview Panduan Penulisan"
+              class="template-preview"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="template-preview-fallback" aria-hidden="true">
+              <i class="fas fa-file-pdf"></i>
+              <span>PDF</span>
+            </div>
+          </div>
+          <div class="template-info">
+            <span class="template-badge badge-purple">PDF Guide</span>
+            <h3 class="template-name">Panduan Penulisan</h3>
+            <p class="template-desc">
+              Dokumentasi lengkap standar format, tata cara penulisan,
+              dan ketentuan pengumpulan laporan.
+            </p>
+            <a href="https://drive.google.com/file/d/GANTI-ID-FILE-PANDUAN/view?usp=sharing"
+               target="_blank" rel="noopener"
+               class="btn btn-secondary ripple">
+              <i class="fas fa-eye"></i> Baca
+            </a>
+          </div>
+        </article>
+
+      </div><!-- /template-grid -->
+    </div>
+  </section>
 
   <!-- ============================================================
        HALL OF FAME
@@ -748,24 +733,26 @@
   </section>
 
 
-<!-- ============================================================
-       INSTAGRAM CTA
+  <!--
   ============================================================
-    <section class="whatsapp" id="instagram">
-      <div class="container">
-        <div class="wa-card glass-card reveal">
-          <i class="fab fa-instagram wa-icon"></i>
-          <h2 class="wa-title">Follow Our Instagram<br />to get any information</h2>
-          <p class="wa-desc">
-            Ikuti akun Instagram kami untuk mendapatkan
-            informasi terbaru, jadwal, dan pengumuman seputar praktikum.
-          </p>
-          <a href="https://instagram.com/" class="btn btn-wa ripple" target="_blank" rel="noopener">
-            <i class="fab fa-instagram"></i> Follow Instagram
-          </a>
-        </div>
+  INSTAGRAM CTA (dinonaktifkan)
+  ============================================================
+  <section class="whatsapp" id="instagram">
+    <div class="container">
+      <div class="wa-card glass-card reveal">
+        <i class="fab fa-instagram wa-icon"></i>
+        <h2 class="wa-title">Follow Our Instagram<br />to get any information</h2>
+        <p class="wa-desc">
+          Ikuti akun Instagram kami untuk mendapatkan
+          informasi terbaru, jadwal, dan pengumuman seputar praktikum.
+        </p>
+        <a href="https://instagram.com/" class="btn btn-wa ripple" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i> Follow Instagram
+        </a>
       </div>
-    </section> -->
+    </div>
+  </section>
+  -->
 
 
   <!-- ============================================================
@@ -777,7 +764,6 @@
       <!-- Logo & tagline -->
       <div class="footer-brand">
 
-        <!-- ★ FOOTER LOGO — ganti src="img/logo.png" -->
         <div class="footer-logo">
           <img
             src="assets/icons/LogoAKN.png"
@@ -812,11 +798,10 @@
       <div class="footer-collab">
         <p class="collab-title">In Collaboration With</p>
         <div class="collab-logos">
-            <img src="assets/icons/Logo-Fisika.png" alt="Logo Fisika Unpad">
-            <img src="assets/icons/LogoHIFI-2.png" alt="Logo HIFI">
+          <img src="assets/icons/Logo-Fisika.png" alt="Logo Fisika Unpad">
+          <img src="assets/icons/LogoHIFI-2.png" alt="Logo HIFI">
         </div>
       </div>
-
 
     </div>
 
@@ -830,10 +815,4 @@
   <script src="js/script.js"></script>
 
 </body>
-
 </html>
-
-
-
-
-
