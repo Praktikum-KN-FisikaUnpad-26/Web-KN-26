@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Penyusunan Laporan LaTeX — LabKom AKN 2026 (Angkatan 2025)</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/LogoAKN.png">
+  <link rel="shortcut icon" href="../assets/icons/LogoAKN.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/tutorial.css" />
+</head>
+<body>
+
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+    <span class="orb orb-3"></span>
+  </div>
+  <canvas id="starCanvas" aria-hidden="true"></canvas>
+
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/icons/LogoAKN.png" alt="Logo LabKom AKN" class="nav-logo-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
+        <span class="nav-logo-fallback" aria-hidden="true"><i class="fas fa-infinity"></i></span>
+        <span class="nav-logo-text">LabKom <strong>AKN</strong></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#format">Format</a></li>
+          <li><a href="#penilaian">Penilaian</a></li>
+          <li><a href="#struktur">Struktur</a></li>
+          <li><a href="#konten">Konten</a></li>
+          <li><a href="#compile">Kompilasi</a></li>
+          <li><a href="../index.html" class="nav-cta"><i class="fas fa-home"></i> Beranda</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <ul>
+        <li><a href="#format">Format Laporan</a></li>
+        <li><a href="#penilaian">Aspek Penilaian</a></li>
+        <li><a href="#struktur">Struktur Folder</a></li>
+        <li><a href="#cover">Edit Cover</a></li>
+        <li><a href="#copyright">Edit Copyright</a></li>
+        <li><a href="#konten">Isi Laporan</a></li>
+        <li><a href="#compile">Prosedur Kompilasi</a></li>
+        <li><a href="../index.html">Beranda</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="binary-rain" id="binaryRain"></div>
+    <div class="container hero-layout">
+      <div class="hero-content reveal">
+        <p class="hero-arcade">// PANDUAN RESMI TEMPLATE LATEX AKN 2026</p>
+        <h1 class="hero-title">
+          Panduan Pengisian<br/>
+          <span class="gradient-text">Template LaTeX</span>
+        </h1>
+        <p class="hero-desc">
+          Panduan komprehensif mengenai pengisian laporan praktikum menggunakan
+          <i>Template</i> yang telah disesuaikan oleh tim Asisten Laboratorium Komputer AKN 2026.
+        </p>
+        <div class="hero-buttons">
+          <a href="#struktur">
+            <button class="btn btn-primary ripple">
+              <i class="fas fa-folder-open"></i> Tinjau Struktur
+            </button>
+          </a>
+          <a href="../index.html#template">
+            <button class="btn btn-secondary ripple">
+              <i class="fas fa-download"></i> Download Template
+            </button>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-card glass-card">
+          <div class="hero-card-logo">
+            <img src="../assets/icons/Latex.webp" alt="LaTeX Logo" class="hero-logo-img"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
+          </div>
+          <h3 class="hero-card-title">Template Laporan</h3>
+          <p class="hero-card-sub">Versi AKN &middot; Tahun Ajaran 2025/2026</p>
+          <div class="divider"></div>
+          <p class="hero-card-body">
+            Disusun oleh tim Asisten LabKom AKN 2026 sesuai dengan standar laporan format Departemen Fisika Unpad.
+          </p>
+        </div>
+        <div class="float-pill pill-top">
+          <i class="fas fa-file-code"></i> LATEX
+        </div>
+        <div class="float-pill pill-bottom">
+          <i class="fas fa-edit"></i> Laporan Praktikum
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </section>
+
+
+  <!-- ═══════════════════════════════ FORMAT LAPORAN ════════════════════════════ -->
+  <section class="template" id="format">
+    <div class="container">
+
+      <div class="section-head reveal" style="text-align:center;">
+        <span class="section-label">Struktur Wajib</span>
+        <h2 class="section-title" style="text-align:center;">
+          <span style="font-family:var(--ff-arcade);font-size:clamp(1.4rem,4vw,2.2rem);letter-spacing:2px;">FORMAT LAPORAN</span>
+        </h2>
+        <p class="section-desc" style="margin:0 auto;">
+          Laporan praktikum diwajibkan memuat enam bagian berikut secara sistematis dan berurutan.
+          Bagian III dan IV harus memiliki tiga subbagian wajib.
+        </p>
+      </div>
+
+      <div class="fmt-wrapper reveal">
+
+        <div class="fmt-list">
+          <div class="glass-card fmt-item fmt-item--normal"><p>I. TUJUAN PRAKTIKUM</p></div>
+          <div class="glass-card fmt-item fmt-item--normal"><p>II. TEORI DASAR</p></div>
+          <div class="glass-card fmt-item fmt-item--highlight"><p>III. TUGAS PRAKTIKUM</p></div>
+          <div class="glass-card fmt-item fmt-item--highlight"><p>IV. TUGAS AKHIR</p></div>
+          <div class="glass-card fmt-item fmt-item--normal"><p>V. KESIMPULAN</p></div>
+          <div class="glass-card fmt-item fmt-item--normal"><p>VI. DAFTAR PUSTAKA</p></div>
+        </div>
+
+        <div class="fmt-arrow"><i class="fas fa-caret-right"></i></div>
+
+        <div class="glass-card fmt-sub">
+          <p class="hero-arcade fmt-sub-label">// BAGIAN III &amp; IV</p>
+          <div class="fmt-sub-items">
+            <div class="fmt-sub-item">
+              <i class="fas fa-code"></i>
+              <p>Kode Program (Listing)</p>
+            </div>
+            <div class="fmt-sub-item">
+              <i class="fas fa-terminal"></i>
+              <p>Output Program</p>
+            </div>
+            <div class="fmt-sub-item">
+              <i class="fas fa-microscope"></i>
+              <p>Analisis Program</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="glass-card fmt-editor-tip reveal reveal-delay-2">
+        <i class="fas fa-pen-nib"></i>
+        <div>
+          <p class="tip-title">Online LaTeX Editor</p>
+          <p class="tip-body">
+            Gunakan platform
+            <a href="https://prism.openai.com/" target="_blank" rel="noopener"
+               style="color:var(--clr-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;">Prism</a>
+            sebagai <i>Editor</i> utama untuk menulis, memeriksa <i>Error</i>, dan mengompilasi dokumen LaTeX Anda secara <i>Online</i>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════ PENILAIAN ════════════════════════════════ -->
+  <section class="hall" id="penilaian">
+    <div class="container">
+
+      <div class="section-head reveal" style="text-align:center;">
+        <span class="section-label">Rubrik Penilaian</span>
+        <h2 class="section-title" style="text-align:center;">
+          <span style="font-family:var(--ff-arcade);font-size:clamp(1.3rem,3.5vw,2rem);letter-spacing:2px;">ASPEK PENILAIAN</span>
+        </h2>
+        <p class="section-desc" style="margin:0 auto;">
+          Harap perhatikan rentang kriteria penilaian berikut sebelum menyusun laporan praktikum.
+        </p>
+      </div>
+
+      <div class="rubrik-list reveal">
+
+        <div class="glass-card rubrik-row rubrik-row--a">
+          <div class="rubrik-score rubrik-score--a"><p>100 - 83</p></div>
+          <p class="rubrik-desc">Laporan lengkap (termasuk pengerjaan tugas tambahan), sesuai dengan format resmi yang ditetapkan, program beserta tampilan tersusun rapi dan mudah diinterpretasikan, dianalisis secara logis, serta kesimpulan memuat seluruh poin yang substansial.</p>
+        </div>
+
+        <div class="glass-card rubrik-row rubrik-row--b">
+          <div class="rubrik-score rubrik-score--b"><p>82 - 75</p></div>
+          <p class="rubrik-desc">Tidak semua program dianalisis secara logis dan menyeluruh, serta bagian kesimpulan hanya memuat sebagian poin penting dari tujuan praktikum.</p>
+        </div>
+
+        <div class="glass-card rubrik-row rubrik-row--c">
+          <div class="rubrik-score rubrik-score--c"><p>74 - 65</p></div>
+          <p class="rubrik-desc">Komponen lengkap sesuai format laporan, namun struktur program dan tata letak tampilan kurang rapi. Seluruh program diselesaikan meskipun terdapat kekeliruan pengerjaan. Kesimpulan tidak memuat poin-poin yang relevan.</p>
+        </div>
+
+        <div class="glass-card rubrik-row rubrik-row--d">
+          <div class="rubrik-score rubrik-score--d"><p>65 - 45</p></div>
+          <p class="rubrik-desc">Laporan tidak lengkap dan tidak tersusun rapi. Banyak pengerjaan program yang tidak diselesaikan. Analisis dan penyusunan kesimpulan dikerjakan secara tidak memadai.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════ ATURAN ═══════════════════════════════════ -->
+  <section class="asisten-praktikum" id="aturan">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Instruksi Penting</span>
+        <h2 class="section-title">Peraturan <span class="gradient-text">Wajib</span></h2>
+        <p class="section-desc">Sebelum memulai penyusunan, mohon pahami ketiga peraturan utama berikut agar proses penyusunan laporan berjalan dengan lancar.</p>
+      </div>
+      <div class="asisten-grid rule-grid">
+
+        <article class="asisten-card glass-card reveal" style="padding:28px 22px;text-align:left;">
+          <div class="rule-icon rule-icon--primary"><i class="fas fa-lock"></i></div>
+          <p class="asisten-name" style="text-align:left;margin-bottom:8px;">Dilarang Mengubah File Lain</p>
+          <p class="asisten-role" style="text-align:left;font-size:.75rem;color:var(--text-muted);line-height:1.7;">
+            Anda hanya diperkenankan mengedit <strong style="color:var(--clr-accent);">3 file</strong>:
+            <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">01-Inizio.tex</code>,
+            <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">02-Copyright.tex</code>, dan
+            <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">03-Content.tex</code>.
+            <i>File</i> konfigurasi lainnya (seperti <i>package</i> dan <i>class</i> bawaan) dilarang keras untuk dimodifikasi.
+          </p>
+        </article>
+
+        <article class="asisten-card glass-card reveal reveal-delay-1" style="padding:28px 22px;text-align:left;">
+          <div class="rule-icon rule-icon--accent"><i class="fas fa-folder-tree"></i></div>
+          <p class="asisten-name" style="text-align:left;margin-bottom:8px;">Penyimpanan File Sesuai Folder</p>
+          <p class="asisten-role" style="text-align:left;font-size:.75rem;color:var(--text-muted);line-height:1.7;">
+            <i>File</i> berekstensi <strong style="color:var(--clr-accent);">.py</strong> wajib ditempatkan pada <i>Folder</i>
+            <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">Code-Python/</code>
+            dan <i>Screenshot</i> pada <i>Folder</i>
+            <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">Picture/</code>.
+            Dilarang menggabungkan atau menyimpannya di luar dari <i>Folder</i> yang telah ditentukan.
+          </p>
+        </article>
+
+        <article class="asisten-card glass-card reveal reveal-delay-2" style="padding:28px 22px;text-align:left;">
+          <div class="rule-icon rule-icon--warn"><i class="fas fa-play-circle"></i></div>
+          <p class="asisten-name" style="text-align:left;margin-bottom:8px;">Kompilasi Langsung dari 03-Content.tex</p>
+          <p class="asisten-role" style="text-align:left;font-size:.75rem;color:var(--text-muted);line-height:1.7;">
+            <i>File</i>
+            <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">03-Content.tex</code>
+            sekaligus berfungsi sebagai <i>File</i> utama kompilasi. Tetapkan selalu <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">03-Content.tex</code>
+            sebagai <i>Main File</i> di platform
+            <a href="https://prism.openai.com/" target="_blank" rel="noopener" style="color:var(--clr-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;">Prism</a>.
+            Apabila terdapat <i>Error</i>, perbaiki kode terlebih dahulu sebelum mengompilasi ulang.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════ STRUKTUR FOLDER ═════════════════════════════ -->
+  <section class="buku-referensi" id="struktur">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-label">Pengenalan Folder</span>
+        <h2 class="section-title">Struktur <span class="gradient-text">Folder</span> Template</h2>
+        <p class="section-desc">
+          Berikut adalah struktur <i>Folder</i> setelah Anda melakukan <i>Download</i> dan mengekstrak <i>File Template</i>.
+          Warna Hijau menandakan <i>File</i> yang diizinkan untuk diedit, sedangkan Merah/Abu menandakan <i>File</i> yang dilarang diubah.
+          <strong style="color:var(--clr-warn);">03-Content.tex</strong> kini sekaligus menjadi <i>File</i> utama kompilasi.
+        </p>
+      </div>
+      <div class="glass-card file-tree-wrap reveal">
+        <pre class="file-tree"><span class="ft-root">Template-AKN/</span>
+&#x2502;
+&#x251C;&#x2500;&#x2500; <span class="ft-edit">03-Content.tex</span>          <span class="ft-note">&larr; EDIT &amp; COMPILE: Isi laporan + File utama kompilasi</span>
+&#x251C;&#x2500;&#x2500; <span class="ft-edit">02-Copyright.tex</span>        <span class="ft-note">&larr; EDIT: Pernyataan orisinalitas (Nama &amp; NPM)</span>
+&#x2502;
+&#x251C;&#x2500;&#x2500; <span class="ft-lock">Cover/</span>
+&#x2502;   &#x2514;&#x2500;&#x2500; <span class="ft-lock">[EDIT HERE] Main-Cover/</span>
+&#x2502;       &#x251C;&#x2500;&#x2500; <span class="ft-edit">01-Inizio.tex</span>      <span class="ft-note">&larr; EDIT: Cover halaman depan</span>
+&#x2502;       &#x251C;&#x2500;&#x2500; <span class="ft-lock">packages.tex</span>           <span class="ft-note" style="color:rgba(255,255,255,.2);">&larr; Dilarang mengubah bagian ini</span>
+&#x2502;       &#x251C;&#x2500;&#x2500; <span class="ft-lock">UnpadLogo.png</span>
+&#x2502;       &#x2514;&#x2500;&#x2500; <span class="ft-lock">UnpadBW.jpg</span>
+&#x2502;
+&#x251C;&#x2500;&#x2500; <span class="ft-folder">Code-Python/</span>           <span class="ft-note">&larr; Upload seluruh file .py pada folder ini</span>
+&#x2502;   &#x2514;&#x2500;&#x2500; namafile.py
+&#x2502;
+&#x2514;&#x2500;&#x2500; <span class="ft-folder">Picture/</span>               <span class="ft-note">&larr; Upload Screenshot/gambar pada folder ini</span>
+    &#x251C;&#x2500;&#x2500; <span class="ft-main">foto.jpg</span>           <span class="ft-note">&larr; Pasfoto formal Anda (ditampilkan pada Header laporan)</span>
+    &#x2514;&#x2500;&#x2500; output1.jpg</pre>
+        <div class="hall-pill file-tree-tip">
+          <i class="fas fa-lightbulb" style="color:var(--clr-warn);"></i>
+          <span style="font-size:.76rem;">Saat memanggil <i>File</i> kode atau gambar di Prism, cukup ketikkan nama <i>File</i> dan Prism akan merekomendasikan <i>path</i>-nya secara otomatis.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════ PANDUAN PENGISIAN ══════════════════════════════ -->
+  <section class="template" id="cover">
+    <div class="container">
+
+      <div class="section-head reveal">
+        <span class="section-label">Langkah Penyusunan</span>
+        <h2 class="section-title">Panduan Pengisian <span class="gradient-text">Template</span></h2>
+        <p class="section-desc">Ikuti tahapan berikut secara berurutan. Anda hanya perlu mengedit tiga <i>File</i> utama secara sistematis.</p>
+      </div>
+
+      <!-- ── File 1: 01-Inizio.tex ── -->
+      <div class="shelf-section reveal" style="margin-bottom:48px;">
+        <h3 class="shelf-label">
+          <i class="fas fa-id-card"></i>
+          File 1 &mdash;
+          <code style="font-family:'Courier New',monospace;font-size:.7rem;color:var(--clr-accent);">Cover/[EDIT HERE] Main-Cover/01-Inizio.tex</code>
+        </h3>
+        <div class="glass-card content-section-wrap">
+          <p class="template-desc" style="margin-bottom:22px;">
+            <i>File</i> ini berfungsi untuk mengatur <strong>halaman Cover depan</strong> laporan.
+            Harap hanya mengubah tiga variabel berikut dan membiarkan perintah (<i>Syntax</i>) lainnya tetap utuh.
+          </p>
+          <div class="tut-section-grid">
+            <div>
+              <p class="shelf-label tut-col-label tut-col-label--warn">
+                <i class="fas fa-pencil-alt"></i> Bagian yang Memerlukan Perubahan
+              </p>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div class="glass-card field-card field-card--ok">
+                  <p class="field-cmd">\Relatore{}</p>
+                  <p class="field-desc">Ubah bagian ini dengan <strong style="color:var(--text-primary);">nama lengkap Asisten Praktikum</strong> modul Anda.</p>
+                </div>
+                <div class="glass-card field-card field-card--ok">
+                  <p class="field-cmd">\Candidato{}</p>
+                  <p class="field-desc">Ubah bagian ini dengan <strong style="color:var(--text-primary);">nama lengkap Anda</strong>.</p>
+                </div>
+                <div class="glass-card field-card field-card--ok">
+                  <p class="field-cmd">\Matricola{}</p>
+                  <p class="field-desc">Ubah bagian ini dengan <strong style="color:var(--text-primary);">NPM Anda</strong>.</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p class="shelf-label tut-col-label tut-col-label--accent">
+                <i class="fas fa-code"></i> Contoh Hasil Pengisian
+              </p>
+              <pre class="tut-pre tut-pre--teal">\Relatore{
+  \large <span class="hi-ok">Nama Asisten Modul</span>
+}
+\RelatoreLabel{\Large Asisten Praktikum}
+\CandidatoLabel{\Large Nama}
+
+\Candidato{
+  \large <span class="hi-ok">Nama Lengkap Anda</span>
+}
+\Matricola{
+  \large <span class="hi-ok">140310240001</span>
+}
+\DataEsame{\today}</pre>
+              <div class="hall-pill pill--danger" style="margin-top:12px;">
+                <i class="fas fa-times-circle" style="color:var(--clr-danger);"></i>
+                <span style="font-size:.73rem;">Dilarang mengubah perintah <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">\Titolo{}</code>, <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">\Logo{}</code>, maupun struktur standar lainnya.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── File 2: 02-Copyright.tex ── -->
+      <div class="shelf-section reveal reveal-delay-1" style="margin-bottom:48px;" id="copyright">
+        <h3 class="shelf-label">
+          <i class="fas fa-copyright"></i>
+          File 2 &mdash;
+          <code style="font-family:'Courier New',monospace;font-size:.7rem;color:var(--clr-accent);">02-Copyright.tex</code>
+        </h3>
+        <div class="glass-card content-section-wrap">
+          <p class="template-desc" style="margin-bottom:22px;">
+            Bagian ini memuat halaman pernyataan orisinalitas pengerjaan laporan. Silakan lakukan pencarian pada teks berikut dan edit sesuai dengan identitas Anda:
+          </p>
+          <div class="tut-section-grid">
+            <div>
+              <p class="shelf-label tut-col-label tut-col-label--danger">
+                <i class="fas fa-search"></i> Teks Asal (Pencarian)
+              </p>
+              <pre class="tut-pre tut-pre--danger"><span class="hi-danger">Saya \textbf{[Nama - 140310210000]}
+selaku \textit{author}...</span></pre>
+            </div>
+            <div>
+              <p class="shelf-label tut-col-label tut-col-label--ok">
+                <i class="fas fa-check"></i> Teks Pengganti
+              </p>
+              <pre class="tut-pre tut-pre--ok"><span class="hi-ok">Saya \textbf{Nama Anda - 140310240001}
+selaku \textit{author}...</span></pre>
+            </div>
+          </div>
+          <div class="hall-pill pill--purple" style="margin-top:16px;display:inline-flex;">
+            <i class="fas fa-info-circle" style="color:var(--clr-primary);"></i>
+            <span style="font-size:.74rem;">Ubah teks yang berada di dalam tanda kurung siku <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">[ ]</code>. Harap tidak merombak struktur kalimat orisinalitas lainnya.</span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ── File 3: 03-Content.tex ── -->
+      <div class="shelf-section reveal" id="konten">
+        <h3 class="shelf-label">
+          <i class="fas fa-file-alt"></i>
+          File 3 &mdash;
+          <code style="font-family:'Courier New',monospace;font-size:.7rem;color:var(--clr-accent);">03-Content.tex</code>
+          &nbsp;&mdash; <span style="color:var(--clr-warn);">File Utama Kompilasi &amp; Isi Laporan</span>
+        </h3>
+
+        <!-- Notice -->
+        <div class="glass-card identity-notice reveal">
+          <i class="fas fa-bolt"></i>
+          <div>
+            <p style="font-family:var(--ff-display);font-size:.84rem;font-weight:700;margin-bottom:5px;">File ini sekaligus merupakan File kompilasi utama</p>
+            <p style="font-size:.78rem;color:var(--text-muted);line-height:1.7;">
+              <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">03-Content.tex</code>
+              sudah mengintegrasikan seluruh konfigurasi dokumen, pemanggilan Cover, Copyright, dan semua konten akademis dalam satu file.
+              Tetapkan file ini sebagai <strong style="color:var(--clr-warn);">Main File</strong> di Prism saat kompilasi — tidak perlu berpindah file.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card content-section-wrap">
+          <p class="template-desc" style="margin-bottom:28px;">
+            Seluruh muatan akademis laporan praktikum disusun pada <i>File</i> ini.
+            Terdapat dua bagian yang perlu dilengkapi: <strong style="color:var(--clr-accent);">Identitas &amp; Header</strong>
+            di bagian atas file, lalu <strong style="color:var(--clr-accent);">Konten Laporan</strong> di bagian bawahnya.
+          </p>
+
+          <!-- ─ Bagian A: Identitas & Header ─ -->
+          <div style="margin-bottom:32px;">
+            <p class="asisten-name tut-section-label">
+              <span class="template-badge badge-orange" style="margin-right:10px;">A</span>
+              Identitas &amp; Header — Bagian Atas 03-Content.tex
+            </p>
+            <p class="template-desc" style="font-size:.8rem;margin-bottom:14px;">
+              Bagian paling atas file memuat konfigurasi identitas yang akan ditampilkan pada <strong>header setiap halaman</strong> laporan.
+              Ubah nilai-nilai berikut sesuai data diri Anda:
+            </p>
+
+            <div class="tut-section-grid" style="margin-bottom:14px;">
+              <div>
+                <p class="shelf-label tut-col-label tut-col-label--warn">
+                  <i class="fas fa-pencil-alt"></i> Field yang Diubah
+                </p>
+                <div style="display:flex;flex-direction:column;gap:10px;">
+                  <div class="glass-card field-card field-card--ok">
+                    <p class="field-cmd">\journalname{\Large Modul X - ...}</p>
+                    <p class="field-desc">Nama modul praktikum yang sedang dikerjakan.</p>
+                  </div>
+                  <div class="glass-card field-card field-card--ok">
+                    <p class="field-cmd">\author[first author]{\LARGE ...}</p>
+                    <p class="field-desc">Nama lengkap dan alamat email Unpad Anda.</p>
+                  </div>
+                  <div class="glass-card field-card field-card--ok">
+                    <p class="field-cmd">\affil[NPM]{\Large 14031025XXXX, ...}</p>
+                    <p class="field-desc">NPM Anda (10 digit).</p>
+                  </div>
+                  <div class="glass-card field-card field-card--ok">
+                    <p class="field-cmd">\professor{\large Asisten Praktikum : ...}</p>
+                    <p class="field-desc">Nama asisten modul Anda.</p>
+                  </div>
+                  <div class="glass-card field-card field-card--ok">
+                    <p class="field-cmd">\theday{DD Month, YYYY}</p>
+                    <p class="field-desc">Tanggal pengerjaan laporan.</p>
+                  </div>
+                  <div class="glass-card field-card field-card--ok">
+                    <p class="field-cmd">\leadauthor{Nama Belakang et al.}</p>
+                    <p class="field-desc">Nama belakang Anda untuk <i>footer</i> halaman.</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="shelf-label tut-col-label tut-col-label--accent">
+                  <i class="fas fa-code"></i> Contoh Pengisian
+                </p>
+                <pre class="tut-pre tut-pre--orange">\journalname{\Large <span class="hi-ok">Modul 3 - Persamaan Non-Linier</span>}
+\title{Laporan Akhir Praktikum
+  Komputasi Numerik (with \LaTeX)}
+
+\author[first author]{
+  \LARGE <span class="hi-ok">Budi Santoso,
+  budi24001@mail.unpad.ac.id</span>
+}
+\singlespacing
+
+\affil[NPM]{
+  \Large <span class="hi-ok">140310250001</span>,
+  Departement of Physics -
+  Universitas Padjadjaran
+}
+\singlespacing
+
+\professor{
+  \large Asisten Praktikum :
+  <span class="hi-ok">Nama Asisten Modul</span>
+}
+
+\theday{<span class="hi-ok">12 March, 2025</span>}
+\leadauthor{<span class="hi-ok">Santoso</span> et al.}</pre>
+
+                <div class="hall-pill pill--orange" style="margin-top:12px;">
+                  <i class="fas fa-camera" style="color:var(--clr-warn);"></i>
+                  <span style="font-size:.73rem;">Letakkan pasfoto formal Anda dengan nama
+                    <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">foto.jpg</code>
+                    di dalam <i>Folder</i>
+                    <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">Picture/</code> — foto akan tampil otomatis di sudut kanan atas laporan.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="border-top:1px solid rgba(168,85,247,.2);margin-bottom:28px;"></div>
+
+          <!-- ─ Bagian B: Konten Laporan ─ -->
+          <p class="asisten-name tut-section-label" style="margin-bottom:20px;">
+            <span class="template-badge badge-teal" style="margin-right:10px;">B</span>
+            Konten Laporan — Bagian Bawah 03-Content.tex
+          </p>
+
+          <!-- § 1 Tujuan -->
+          <div style="margin-bottom:28px;">
+            <p class="asisten-name tut-section-label">
+              <span class="template-badge badge-purple" style="margin-right:10px;">&#167; 1</span>
+              \section{Tujuan}
+            </p>
+            <pre class="tut-pre tut-pre--purple">\section{Tujuan}
+<span class="hi-warn">% Telah tersedia pada Template, mohon disesuaikan dengan modul masing-masing</span>
+Mahasiswa diharapkan mampu menghitung menggunakan
+metode [nama metode] ...</pre>
+          </div>
+
+          <!-- § 2 Teori -->
+          <div style="margin-bottom:28px;">
+            <p class="asisten-name tut-section-label">
+              <span class="template-badge badge-teal" style="margin-right:10px;">&#167; 2</span>
+              \section{Teori}
+            </p>
+            <p class="template-desc" style="font-size:.8rem;margin-bottom:10px;">
+              Teori dasar beserta persamaannya <strong>telah diintegrasikan secara lengkap</strong> di dalam <i>Template</i>.
+              Anda diperkenankan untuk menambahkan pemaparan teoretis tambahan guna memperoleh nilai tambah sesuai diskresi Asisten Praktikum.
+            </p>
+            <pre class="tut-pre tut-pre--teal">\section{Teori}
+<span class="hi-muted">% Pemaparan teori dasar telah disematkan. Penambahan literatur diperbolehkan.</span>
+
+\begin{equation}
+    f(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \dots
+    \label{eq:taylor}
+\end{equation}
+
+\subsection{Metode Pangkat}
+...
+\subsection{Metode Pangkat Inversi}
+...</pre>
+          </div>
+
+          <!-- § 3 Tugas Praktikum -->
+          <div style="margin-bottom:28px;">
+            <p class="asisten-name tut-section-label">
+              <span class="template-badge badge-orange" style="margin-right:10px;">&#167; 3</span>
+              \section{Tugas Praktikum} &mdash; Bagian Inti Penilaian
+            </p>
+            <p class="template-desc" style="font-size:.8rem;margin-bottom:14px;">
+              Setiap percobaan diwajibkan memuat tiga aspek fundamental:
+              <strong style="color:var(--clr-accent);">Listing Kode Python</strong>,
+              <strong style="color:var(--clr-accent);">Output Program</strong> (berupa <i>Screenshot</i>),
+              serta <strong style="color:var(--clr-accent);">Analisis Program</strong>.
+              Sistematika ini berlaku iteratif untuk seluruh nomor percobaan.
+            </p>
+            <pre class="tut-pre tut-pre--orange">\section{Tugas Praktikum}
+\begin{itemize}
+    \item[a.] Percobaan Matriks 1
+    ...
+
+    \subsection{Percobaan 1}
+    \subsubsection{Listing Program}
+
+    <span class="hi-muted">%--- LISTING KODE PYTHON ---</span>
+    \nolinenumbers
+        \lstinputlisting[
+            caption=Judul Program.,
+            language=Python,
+            label=code
+        ]{Code-Python/<span class="hi-accent">namafile_anda.py</span>}
+    \linenumbers
+
+    <span class="hi-muted">%--- OUTPUT PROGRAM (Screenshot) ---</span>
+    \subsubsection{Output Program}
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=1\linewidth]{Picture/<span class="hi-accent">screenshot_output.jpg</span>}
+        \caption{Output Program Percobaan 1}
+        \label{fig:output1}
+    \end{figure}
+
+    <span class="hi-muted">%--- ANALISIS PROGRAM ---</span>
+    \subsubsection{Analisis Program}
+    <span class="hi-warn">[Tuliskan Analisis Pemrograman Anda di Sini]</span>
+
+    \item[b.] Percobaan Matriks 2
+    ...
+    \subsection{Percobaan 2}
+    <span class="hi-muted">% Format repetitif untuk percobaan selanjutnya. Ganti nama file dan caption.</span>
+
+\end{itemize}</pre>
+            <div class="tut-pills">
+              <div class="hall-pill pill--orange">
+                <i class="fas fa-copy" style="color:var(--clr-warn);"></i>
+                <span style="font-size:.74rem;">Format di atas diterapkan berulang untuk Percobaan 2, 3, dst &mdash; pastikan nama pemanggilan <i>File</i> dan <i>caption</i> selalu diganti.</span>
+              </div>
+              <div class="hall-pill pill--teal">
+                <i class="fas fa-folder" style="color:var(--clr-accent);"></i>
+                <span style="font-size:.74rem;">Simpan <i>File</i> .py di <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">Code-Python/</code> &bull; <i>Screenshot</i> di <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">Picture/</code></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- § 4 Tugas Akhir -->
+          <div style="margin-bottom:28px;">
+            <p class="asisten-name tut-section-label">
+              <span class="template-badge badge-purple" style="margin-right:10px;">&#167; 4</span>
+              \section{Tugas Akhir}
+            </p>
+            <p class="template-desc" style="font-size:.8rem;margin-bottom:10px;">
+              Sistematika pengisian Tugas Akhir identik dengan Tugas Praktikum (Listing &rarr; Output &rarr; Analisis) untuk setiap butir soal.
+              Gunakan notasi <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">\item[1.]</code>,
+              <code style="background:rgba(168,85,247,.15);padding:1px 6px;border-radius:4px;">\item[2.]</code>, dst.
+            </p>
+            <pre class="tut-pre tut-pre--purple">\section{Tugas Akhir}
+\begin{itemize}
+    \item[1.] Buatlah program untuk ...
+
+    \textbf{Listing Program}
+        \nolinenumbers
+            \lstinputlisting[...]{Code-Python/<span class="hi-accent">tugasakhir1.py</span>}
+        \linenumbers
+
+    \textbf{Output Program}:
+    \begin{figure}[h!]
+        ...
+        \includegraphics[...]{Picture/<span class="hi-accent">output_ta1.jpg</span>}
+    \end{figure}
+
+    \textbf{Analisis Program}
+    \newline
+    <span class="hi-warn">[Tuliskan Analisis Anda di Sini]</span>
+
+    \item[2.] ...
+\end{itemize}</pre>
+          </div>
+
+          <!-- § 5 & § 6 -->
+          <div class="tut-section-grid--sm">
+            <div>
+              <p class="asisten-name tut-section-label">
+                <span class="template-badge badge-teal" style="margin-right:10px;">&#167; 5</span>
+                \section{Kesimpulan}
+              </p>
+              <pre class="tut-pre tut-pre--teal">\section{Kesimpulan}
+Berdasarkan praktikum yang telah
+dilaksanakan, dapat disimpulkan bahwa:
+
+\begin{enumerate}
+    \item [Poin kesimpulan pertama]
+    \item [Poin kesimpulan kedua]
+\end{enumerate}</pre>
+            </div>
+            <div>
+              <p class="asisten-name tut-section-label">
+                <span class="template-badge badge-purple" style="margin-right:10px;">&#167; 6</span>
+                Daftar Pustaka
+              </p>
+              <pre class="tut-pre tut-pre--purple">\begin{thebibliography}{1}
+    \bibitem{ref1}
+    Munir, R.(2021)
+    \emph{Metoda Numerik},
+    Informatika.
+
+    \bibitem{ref2}
+    [Referensi Literatur Tambahan]
+\end{thebibliography}</pre>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════ KOMPILASI ════════════════════════════════ -->
+  <section class="hall" id="compile">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;">
+        <span class="section-label">Tahap Akhir</span>
+        <h2 class="section-title">&#9881;&#65039; Prosedur <span class="gradient-text">Kompilasi</span></h2>
+        <p class="section-desc" style="margin:0 auto;">
+          Setelah seluruh <i>File</i> diedit, lakukan kompilasi menjadi dokumen PDF menggunakan platform
+          <a href="https://prism.openai.com/" target="_blank" rel="noopener" style="color:var(--clr-accent);font-weight:800;text-decoration:underline;text-underline-offset:3px;">Prism</a>.
+          <strong>Pastikan 03-Content.tex ditetapkan sebagai Main File.</strong>
+        </p>
+      </div>
+
+      <div class="compile-list reveal">
+
+        <div class="glass-card compile-step compile-step--purple">
+          <div class="step-num step-num--1">1</div>
+          <div class="step-body">
+            <p class="asisten-name step-title">Akses Prism dan Inisialisasi Proyek Baru</p>
+            <p>
+              Akses platform <a href="https://prism.openai.com/" target="_blank" rel="noopener" style="color:var(--clr-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;">Prism</a>,
+              kemudian buat proyek baru atau impor <i>Template</i> yang telah Anda <i>Download</i>.
+              Pastikan hierarki <i>Folder</i> tidak berubah setelah diunggah.
+              <i>Upload</i> pula <i>File</i> .py ke
+              <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">Code-Python/</code>,
+              <i>Screenshot</i> ke
+              <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">Picture/</code>,
+              dan pasfoto dengan nama
+              <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">foto.jpg</code>
+              ke <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">Picture/</code>.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card compile-step compile-step--teal">
+          <div class="step-num step-num--2">2</div>
+          <div class="step-body">
+            <p class="asisten-name step-title">Tetapkan 03-Content.tex sebagai Main File</p>
+            <p>
+              Di panel Prism, klik kanan pada
+              <code style="background:rgba(168,85,247,.15);padding:0 5px;border-radius:3px;">03-Content.tex</code>
+              dan pilih <strong>"Set as Main File"</strong> (atau opsi serupa). <i>File</i> ini sudah memuat
+              semua konfigurasi dokumen, pemanggilan Cover, dan Copyright — tidak perlu berpindah file sama sekali.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card compile-step compile-step--orange">
+          <div class="step-num step-num--3">3</div>
+          <div class="step-body">
+            <p class="asisten-name step-title">Verifikasi Tampilan Preview PDF</p>
+            <p>
+              Prism dilengkapi <i>Editor</i> teks dan mode <i>Preview</i> PDF terintegrasi.
+              Apabila <i>Preview</i> gagal terkompilasi, tinjau <i>Error Log</i> yang ditampilkan Prism
+              dan lakukan perbaikan kode pada baris yang direferensikan sebelum mengompilasi ulang.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass-card compile-step compile-step--green">
+          <div class="step-num step-num--4">4</div>
+          <div class="step-body">
+            <p class="asisten-name step-title">Export Dokumen PDF</p>
+            <p>
+              Setelah kompilasi berjalan sempurna tanpa <i>Error</i>,
+              tekan fitur <i>Export</i> PDF untuk men-<i>Download</i> hasil final.
+              Sangat dianjurkan meninjau kelengkapan rubrik dokumen PDF sebelum diserahkan kepada Asisten Praktikum.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="glass-card error-wrap reveal reveal-delay-2">
+        <p class="shelf-label error-label">
+          <i class="fas fa-bug"></i> Indikasi Error Umum dan Pemecahannya
+        </p>
+        <div class="error-grid">
+          <div class="glass-card error-item">
+            <p class="err-code">File not found: namafile.py</p>
+            <p class="err-desc"><i>File</i> .py belum di-<i>Upload</i> atau terdapat ketidakcocokan penamaan. Periksa kembali <i>Folder</i> <code style="background:rgba(168,85,247,.12);padding:0 5px;border-radius:3px;">Code-Python/</code>.</p>
+          </div>
+          <div class="glass-card error-item">
+            <p class="err-code">File not found: gambar.jpg</p>
+            <p class="err-desc">Berkas visual belum di-<i>Upload</i> di <code style="background:rgba(168,85,247,.12);padding:0 5px;border-radius:3px;">Picture/</code> atau terdapat kekeliruan format ekstensi (.jpg/.png).</p>
+          </div>
+          <div class="glass-card error-item">
+            <p class="err-code">Undefined control sequence</p>
+            <p class="err-desc">Terjadi kesalahan pengetikan perintah LaTeX. Tinjau baris <i>Error</i> yang ditampilkan Prism.</p>
+          </div>
+          <div class="glass-card error-item">
+            <p class="err-code">Missing $ inserted</p>
+            <p class="err-desc">Terdapat simbol atau persamaan matematis yang belum diapit oleh indikator <code style="background:rgba(168,85,247,.12);padding:0 5px;border-radius:3px;">$ ... $</code>.</p>
+          </div>
+        </div>
+        <div class="hall-pill pill--purple" style="margin-top:16px;display:inline-flex;">
+          <i class="fas fa-comment-dots" style="color:var(--clr-primary);"></i>
+          <span style="font-size:.74rem;">Apabila <i>Error</i> tidak dapat diselesaikan secara mandiri, silakan berkonsultasi dengan Asisten Praktikum atau Penanggung Jawab (PIC) kelompok Anda.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════ CTA ═══════════════════════════════════ -->
+  <section class="whatsapp">
+    <div class="container">
+      <div class="wa-card glass-card reveal">
+        <i class="fas fa-file-pdf wa-icon" style="color:var(--clr-primary);"></i>
+        <h2 class="wa-title">Selamat Mengerjakan</h2>
+        <p class="wa-desc">
+          Silakan men-<i>Download Template</i>, membukanya melalui platform
+          <a href="https://prism.openai.com/" target="_blank" rel="noopener" style="color:var(--clr-accent);font-weight:800;text-decoration:underline;text-underline-offset:3px;">Prism</a>,
+          menetapkan <code style="background:rgba(168,85,247,.2);padding:1px 7px;border-radius:4px;">03-Content.tex</code> sebagai <i>Main File</i>,
+          lalu mengedit dan mengompilasi langsung dari situ.
+          Apabila terdapat pertanyaan, jangan ragu menghubungi Asisten Praktikum atau Penanggung Jawab kelompok.
+        </p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+          <a href="https://drive.google.com/drive/folders/1E4YuBcY-5iEGVxWxm3VQongX0BTpRkuZ?usp=sharing"
+             target="_blank" class="btn btn-primary ripple">
+            <i class="fas fa-download"></i> Download Template
+          </a>
+          <a href="../index.html" class="btn btn-secondary ripple">
+            <i class="fas fa-home"></i> Kembali ke Beranda
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="../assets/icons/LogoAKN.png" alt="Logo LabKom AKN" class="footer-logo-img"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
+          <div class="footer-logo-fallback" aria-hidden="true"><i class="fas fa-infinity"></i></div>
+          <span class="footer-logo-text">LabKom <strong>AKN</strong></span>
+        </div>
+        <p class="footer-tagline">
+          Asisten Laboratorium Komputer<br/>
+          Praktikum Komputasi Numerik &middot; Departemen Fisika FMIPA Unpad
+        </p>
+      </div>
+      <nav class="footer-nav" aria-label="Tutorial navigation">
+        <ul>
+          <li><a href="#struktur">Struktur Folder</a></li>
+          <li><a href="#cover">Edit Cover</a></li>
+          <li><a href="#copyright">Edit Copyright</a></li>
+          <li><a href="#konten">Isi Laporan</a></li>
+          <li><a href="#compile">Prosedur Kompilasi</a></li>
+          <li><a href="../index.html">&larr; Beranda</a></li>
+        </ul>
+      </nav>
+      <div class="footer-collab">
+        <p class="collab-title">Bekerja Sama Dengan</p>
+        <div class="collab-logos">
+          <img src="../assets/icons/Logo-Fisika.png" alt="Logo Fisika Unpad">
+          <img src="../assets/icons/LogoHIFI-2.png" alt="Logo HIFI">
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Hak Cipta &copy; 2026 Asisten LabKom AKN &mdash; Seluruh hak dilindungi undang-undang</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
