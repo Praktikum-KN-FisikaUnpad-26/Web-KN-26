@@ -568,7 +568,7 @@ function initHallTimer() {
   if (!container || !elDays) return;
 
   // Target date: July 19, 2026, 15:00 WIB (UTC+7)
-  const targetDate = new Date("2026-07-19T15:43:00+07:00").getTime();
+  const targetDate = new Date("2026-07-19T15:45:00+07:00").getTime();
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
