@@ -570,6 +570,11 @@ function initHallTimer() {
   // Target date: July 19, 2026, 15:00 WIB (UTC+7)
   const targetDate = new Date("2026-07-19T15:00:00+07:00").getTime();
 
+  // Winner data (NPM, names, WebP photos) lives base64-encoded in js/hall-data.js and
+  // is injected into the cards ONLY at reveal time, so it is never present in the rendered
+  // page (or exposed by removing the CSS blur) before the countdown ends.
+  const WINNERS_ENC = (typeof window !== 'undefined' && window.__GT_ENC) || "";
+
   function pad(n) { return String(n).padStart(2, '0'); }
 
   function reveal() {
@@ -580,9 +585,21 @@ function initHallTimer() {
     if (label) label.style.display = 'none';
     if (elRevealed) elRevealed.style.display = 'block';
 
-    // Remove spoiler blur from podium items
-    document.querySelectorAll('.podium-item.spoiler').forEach(item => {
-      item.classList.remove('spoiler');
+    // Inject winner data into the golden cards, then remove the spoiler blur.
+    let winners = [];
+    try { winners = JSON.parse(atob(WINNERS_ENC)); } catch (e) { winners = []; }
+
+    document.querySelectorAll('.golden-card').forEach((card, i) => {
+      const w = winners[i];
+      if (w) {
+        const npm  = card.querySelector('.golden-npm');
+        const img  = card.querySelector('.golden-photo');
+        const name = card.querySelector('.golden-name');
+        if (npm)  npm.textContent  = w.npm;
+        if (name) name.textContent = w.name;
+        if (img)  { img.src = w.photo; img.alt = w.name; }
+      }
+      card.classList.remove('spoiler');
     });
   }
 
