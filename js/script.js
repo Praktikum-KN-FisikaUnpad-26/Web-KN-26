@@ -22,13 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypewriter();
   initCounters();
   initRipple();
-  initBookshelf();
-  initGCalHint();
-  initBookshelfLinks(); 
   initMagneticCards();
   initActiveNav();
   initBinaryRain();
   checkPopupFlip();
+  initHallTimer();
 });
 
 
@@ -553,4 +551,59 @@ function initActiveNav() {
   }, { threshold: 0.40 });
 
   sections.forEach(s => io.observe(s));
+}
+
+/* ================================================================
+   10. HALL OF FAME TIMER
+   Reveals hall of fame on specific date
+================================================================ */
+function initHallTimer() {
+  const container  = document.getElementById('hallCountdown');
+  const elDays     = document.getElementById('cdDays');
+  const elHours    = document.getElementById('cdHours');
+  const elMinutes  = document.getElementById('cdMinutes');
+  const elSeconds  = document.getElementById('cdSeconds');
+  const elRevealed = document.getElementById('cdRevealed');
+
+  if (!container || !elDays) return;
+
+  // Target date: July 19, 2026, 15:00 WIB (UTC+7)
+  const targetDate = new Date("2026-07-19T15:00:00+07:00").getTime();
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function reveal() {
+    // Hide countdown boxes, show revealed message
+    const boxes = container.querySelector('.countdown-boxes');
+    const label = container.querySelector('.countdown-label');
+    if (boxes) boxes.style.display = 'none';
+    if (label) label.style.display = 'none';
+    if (elRevealed) elRevealed.style.display = 'block';
+
+    // Remove spoiler blur from podium items
+    document.querySelectorAll('.podium-item.spoiler').forEach(item => {
+      item.classList.remove('spoiler');
+    });
+  }
+
+  const tick = setInterval(() => {
+    const now = Date.now();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+      clearInterval(tick);
+      reveal();
+      return;
+    }
+
+    const days    = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours   = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    elDays.textContent    = pad(days);
+    elHours.textContent   = pad(hours);
+    elMinutes.textContent = pad(minutes);
+    elSeconds.textContent = pad(seconds);
+  }, 1000);
 }
