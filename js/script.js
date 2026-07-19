@@ -573,17 +573,16 @@ function initHallTimer() {
   function pad(n) { return String(n).padStart(2, '0'); }
 
   function reveal() {
-    // Hide countdown boxes, show revealed message
+    // Hide countdown boxes and label, show revealed message
     const boxes = container.querySelector('.countdown-boxes');
     const label = container.querySelector('.countdown-label');
     if (boxes) boxes.style.display = 'none';
     if (label) label.style.display = 'none';
     if (elRevealed) elRevealed.style.display = 'block';
 
-    // Remove spoiler blur from golden card image
-    document.querySelectorAll('.golden-card.spoiler').forEach(item => {
-      item.classList.remove('spoiler');
-    });
+    // Reveal the completely hidden image
+    const goldenGrid = document.getElementById('goldenGrid');
+    if (goldenGrid) goldenGrid.style.display = 'block';
   }
 
   const tick = setInterval(() => {
