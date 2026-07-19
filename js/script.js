@@ -581,7 +581,7 @@ function initHallTimer() {
     if (elRevealed) elRevealed.style.display = 'block';
 
     // Remove spoiler blur from podium items
-    document.querySelectorAll('.podium-item.spoiler').forEach(item => {
+    document.querySelectorAll('.golden-card.spoiler').forEach(item => {
       item.classList.remove('spoiler');
     });
   }
