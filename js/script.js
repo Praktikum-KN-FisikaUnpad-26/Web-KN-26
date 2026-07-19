@@ -40,23 +40,23 @@ function initStarCanvas() {
   const canvas = document.getElementById('starCanvas');
   if (!canvas) return;
 
-  const ctx    = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d');
   let W, H, stars;
 
   const STAR_COUNT = 110;
 
   function resize() {
-    W = canvas.width  = window.innerWidth;
+    W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
   }
 
   function createStars() {
     stars = Array.from({ length: STAR_COUNT }, () => ({
-      x:    Math.random() * W,
-      y:    Math.random() * H,
-      r:    Math.random() * 1.4 + 0.3,
-      a:    Math.random(),        // current alpha
-      da:   (Math.random() * 0.004 + 0.001) * (Math.random() < 0.5 ? 1 : -1), // delta alpha
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 1.4 + 0.3,
+      a: Math.random(),        // current alpha
+      da: (Math.random() * 0.004 + 0.001) * (Math.random() < 0.5 ? 1 : -1), // delta alpha
       speed: Math.random() * 0.08 + 0.02,
     }));
   }
@@ -96,8 +96,8 @@ function initBinaryRain() {
   const container = document.getElementById('binaryRain');
   if (!container) return;
 
-  const COLS      = 28;   // jumlah kolom — naikin untuk lebih rapat
-  const ROWS      = 18;   // karakter per kolom
+  const COLS = 28;   // jumlah kolom — naikin untuk lebih rapat
+  const ROWS = 18;   // karakter per kolom
 
   for (let i = 0; i < COLS; i++) {
     const col = document.createElement('div');
@@ -107,10 +107,10 @@ function initBinaryRain() {
     col.style.left = `${(i / COLS) * 100 + Math.random() * 2}%`;
 
     // Durasi & delay acak biar gak serentak
-    const dur   = 8 + Math.random() * 14;   // 8–22 detik
+    const dur = 8 + Math.random() * 14;   // 8–22 detik
     const delay = Math.random() * 12;        // 0–12 detik delay awal
     col.style.animationDuration = `${dur}s`;
-    col.style.animationDelay   = `-${delay}s`;
+    col.style.animationDelay = `-${delay}s`;
 
     // Isi kolom dengan 0 dan 1
     for (let j = 0; j < ROWS; j++) {
@@ -145,9 +145,9 @@ function initBinaryRain() {
    2. NAVBAR — Scroll shadow + Hamburger menu
 ================================================================ */
 function initNavbar() {
-  const navbar      = document.getElementById('navbar');
-  const hamburger   = document.getElementById('hamburger');
-  const mobileMenu  = document.getElementById('mobileMenu');
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
 
   if (!navbar) return;
 
@@ -165,7 +165,7 @@ function initNavbar() {
       hamburger.setAttribute('aria-expanded', open);
       mobileMenu.classList.toggle('open', open);
       mobileMenu.setAttribute('aria-hidden', !open);
-      navbar.classList.toggle('open', open); 
+      navbar.classList.toggle('open', open);
     });
 
     // Close on link click
@@ -223,9 +223,9 @@ function initTypewriter() {
   ];
 
   let phraseIdx = 0;
-  let charIdx   = 0;
-  let deleting  = false;
-  let paused    = false;
+  let charIdx = 0;
+  let deleting = false;
+  let paused = false;
 
   // Insert cursor span
   const cursor = document.createElement('span');
@@ -248,14 +248,14 @@ function initTypewriter() {
 
       if (charIdx === current.length) {
         deleting = true;
-        paused   = true;
+        paused = true;
       }
     } else {
       charIdx--;
       target.textContent = current.slice(0, charIdx);
 
       if (charIdx === 0) {
-        deleting  = false;
+        deleting = false;
         phraseIdx = (phraseIdx + 1) % phrases.length;
       }
     }
@@ -281,12 +281,12 @@ function initCounters() {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
 
-      const el     = entry.target;
+      const el = entry.target;
       const target = parseInt(el.dataset.target, 10);
-      const dur    = 1400; // ms
-      const step   = 16;   // ~60fps
-      const inc    = target / (dur / step);
-      let current  = 0;
+      const dur = 1400; // ms
+      const step = 16;   // ~60fps
+      const inc = target / (dur / step);
+      let current = 0;
 
       const tick = setInterval(() => {
         current += inc;
@@ -313,12 +313,12 @@ function initCounters() {
 function initRipple() {
   document.querySelectorAll('.ripple').forEach(btn => {
     btn.addEventListener('click', function (e) {
-      const rect   = this.getBoundingClientRect();
-      const size   = Math.max(rect.width, rect.height);
-      const x      = e.clientX - rect.left - size / 2;
-      const y      = e.clientY - rect.top  - size / 2;
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
 
-      const ring   = document.createElement('span');
+      const ring = document.createElement('span');
       ring.className = 'ripple-ring';
       ring.style.cssText = `
         width: ${size}px;
@@ -338,10 +338,10 @@ function initRipple() {
    7. INTERACTIVE CALENDAR
 ================================================================ */
 function initCalendar() {
-  const grid      = document.getElementById('calGrid');
-  const label     = document.getElementById('calMonthLabel');
-  const prevBtn   = document.getElementById('calPrev');
-  const nextBtn   = document.getElementById('calNext');
+  const grid = document.getElementById('calGrid');
+  const label = document.getElementById('calMonthLabel');
+  const prevBtn = document.getElementById('calPrev');
+  const nextBtn = document.getElementById('calNext');
 
   if (!grid) return;
 
@@ -349,22 +349,22 @@ function initCalendar() {
   // Format: 'YYYY-M-D': 'class-name'
   // Classes: collect | deadline | exam
   const events = {
-    '2026-2-7':  'collect',
+    '2026-2-7': 'collect',
     '2026-2-14': 'deadline',
     '2026-2-21': 'exam',
     '2026-2-28': 'collect',
-    '2026-3-7':  'collect',
+    '2026-3-7': 'collect',
     '2026-3-14': 'deadline',
     '2026-3-18': 'exam',
     '2026-3-28': 'collect',
-    '2026-4-4':  'collect',
+    '2026-4-4': 'collect',
     '2026-4-11': 'deadline',
   };
 
-  const DAY_NAMES   = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
+  const DAY_NAMES = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
   const MONTH_NAMES = [
-    'Januari','Februari','Maret','April','Mei','Juni',
-    'Juli','Agustus','September','Oktober','November','Desember',
+    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember',
   ];
 
   const today = new Date();
@@ -385,7 +385,7 @@ function initCalendar() {
       grid.appendChild(el);
     });
 
-    const firstDay    = new Date(y, m, 1).getDay();
+    const firstDay = new Date(y, m, 1).getDay();
     const daysInMonth = new Date(y, m + 1, 0).getDate();
 
     // Empty cells before first day
@@ -398,17 +398,17 @@ function initCalendar() {
 
     // Day cells
     for (let d = 1; d <= daysInMonth; d++) {
-      const el  = document.createElement('div');
+      const el = document.createElement('div');
       const key = `${y}-${m + 1}-${d}`;
-      let cls   = 'cal-day';
+      let cls = 'cal-day';
 
       const isToday = (
         today.getFullYear() === y &&
-        today.getMonth()    === m &&
-        today.getDate()     === d
+        today.getMonth() === m &&
+        today.getDate() === d
       );
 
-      if (isToday)       cls += ' today';
+      if (isToday) cls += ' today';
       else if (events[key]) cls += ` ${events[key]}`;
 
       el.className = cls;
@@ -469,14 +469,14 @@ function initMagneticCards() {
 
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
-      const rect  = card.getBoundingClientRect();
-      const cx    = rect.left + rect.width  / 2;
-      const cy    = rect.top  + rect.height / 2;
-      const dx    = (e.clientX - cx) / (rect.width  / 2);
-      const dy    = (e.clientY - cy) / (rect.height / 2);
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (rect.width / 2);
+      const dy = (e.clientY - cy) / (rect.height / 2);
 
       const tiltX = dy * -5;   // max 5deg
-      const tiltY = dx *  5;
+      const tiltY = dx * 5;
 
       card.style.transform = `
         perspective(800px)
@@ -533,8 +533,8 @@ window.addEventListener('resize', checkPopupFlip);
    Highlights the nav link for the section currently in view.
 ================================================================ */
 function initActiveNav() {
-  const sections  = document.querySelectorAll('section[id]');
-  const navLinks  = document.querySelectorAll('.nav-links a, .mobile-menu a');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
 
   if (!sections.length || !navLinks.length) return;
 
@@ -558,22 +558,17 @@ function initActiveNav() {
    Reveals hall of fame on specific date
 ================================================================ */
 function initHallTimer() {
-  const container  = document.getElementById('hallCountdown');
-  const elDays     = document.getElementById('cdDays');
-  const elHours    = document.getElementById('cdHours');
-  const elMinutes  = document.getElementById('cdMinutes');
-  const elSeconds  = document.getElementById('cdSeconds');
+  const container = document.getElementById('hallCountdown');
+  const elDays = document.getElementById('cdDays');
+  const elHours = document.getElementById('cdHours');
+  const elMinutes = document.getElementById('cdMinutes');
+  const elSeconds = document.getElementById('cdSeconds');
   const elRevealed = document.getElementById('cdRevealed');
 
   if (!container || !elDays) return;
 
   // Target date: July 19, 2026, 15:00 WIB (UTC+7)
   const targetDate = new Date("2026-07-19T15:00:00+07:00").getTime();
-
-  // Winner data (NPM, names, WebP photos) lives base64-encoded in js/hall-data.js and
-  // is injected into the cards ONLY at reveal time, so it is never present in the rendered
-  // page (or exposed by removing the CSS blur) before the countdown ends.
-  const WINNERS_ENC = (typeof window !== 'undefined' && window.__GT_ENC) || "";
 
   function pad(n) { return String(n).padStart(2, '0'); }
 
@@ -585,21 +580,9 @@ function initHallTimer() {
     if (label) label.style.display = 'none';
     if (elRevealed) elRevealed.style.display = 'block';
 
-    // Inject winner data into the golden cards, then remove the spoiler blur.
-    let winners = [];
-    try { winners = JSON.parse(atob(WINNERS_ENC)); } catch (e) { winners = []; }
-
-    document.querySelectorAll('.golden-card').forEach((card, i) => {
-      const w = winners[i];
-      if (w) {
-        const npm  = card.querySelector('.golden-npm');
-        const img  = card.querySelector('.golden-photo');
-        const name = card.querySelector('.golden-name');
-        if (npm)  npm.textContent  = w.npm;
-        if (name) name.textContent = w.name;
-        if (img)  { img.src = w.photo; img.alt = w.name; }
-      }
-      card.classList.remove('spoiler');
+    // Remove spoiler blur from golden card image
+    document.querySelectorAll('.golden-card.spoiler').forEach(item => {
+      item.classList.remove('spoiler');
     });
   }
 
@@ -613,13 +596,13 @@ function initHallTimer() {
       return;
     }
 
-    const days    = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours   = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    elDays.textContent    = pad(days);
-    elHours.textContent   = pad(hours);
+    elDays.textContent = pad(days);
+    elHours.textContent = pad(hours);
     elMinutes.textContent = pad(minutes);
     elSeconds.textContent = pad(seconds);
   }, 1000);
